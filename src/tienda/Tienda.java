@@ -18,7 +18,15 @@ public class Tienda {
         
        ProductoService tiendaService = new ProductoService();
        
-       tiendaService.mostrarNombres();
+       //tiendaService.mostrarNombres();
+       
+       
+       //tiendaService.mostrarAlgunosPrecios();
+       //tiendaService.mostrarPortatiles();
+       //tiendaService.mostrarProductoMasBarato();
+       tiendaService.ingresarProducto(44, "Equipo RCA Inalámbrico",600.2 , 444);
+        System.out.println();
+       tiendaService.mostrarNombresYPrecios();
     }
     
 }

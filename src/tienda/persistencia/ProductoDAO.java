@@ -11,7 +11,7 @@ public class ProductoDAO extends DAO {
         List<Producto> productos = new ArrayList();
 
         try {
-            consultarBase("SELECT nombre FROM producto");
+            consultarBase("SELECT * FROM producto");
 
             while (resultado.next()) {
                 Producto producto = new Producto();
@@ -29,5 +29,22 @@ public class ProductoDAO extends DAO {
         }
         return productos;
     }
-
+    
+    public void crearProducto(Producto producto) throws Exception{
+        
+        // INSERT INTO producto VALUES (123, 'ASDAS', 122.2,33)
+        
+        try {
+            String sql = "INSERT INTO producto VALUES ('" + producto.getCodigo() + "', '" + producto.getNombre() + "', '"
+                    + producto.getPrecio() + "', '" + producto.getCodigoFabricante() + ")";
+            
+            insertarModificarEliminar(sql);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
 }
+
+
+
