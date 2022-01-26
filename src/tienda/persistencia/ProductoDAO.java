@@ -29,22 +29,45 @@ public class ProductoDAO extends DAO {
         }
         return productos;
     }
-    
-    public void crearProducto(Producto producto) throws Exception{
-        
-        // INSERT INTO producto VALUES (123, 'ASDAS', 122.2,33)
+
+    public void crearProducto(Producto producto) throws Exception {
+
         
         try {
-            String sql = "INSERT INTO producto VALUES ('" + producto.getCodigo() + "', '" + producto.getNombre() + "', '"
-                    + producto.getPrecio() + "', '" + producto.getCodigoFabricante() + ")";
-            
+            String sql = "INSERT INTO producto VALUES (" + producto.getCodigo() + ", '" + producto.getNombre() + "', "
+                    + producto.getPrecio() + ", " + producto.getCodigoFabricante() + ")";
+
             insertarModificarEliminar(sql);
         } catch (Exception e) {
             throw e;
         }
     }
     
+    public void editarNombre(Producto p) throws Exception{
+        
+        try {
+            String sql = "UPDATE producto SET nombre= '" + p.getNombre() + "' WHERE codigo LIKE " + p.getCodigo();
+        insertarModificarEliminar(sql);
+        } catch (Exception e) {
+            throw e;
+        }
+        
+    }
+    
+    public void editarPrecio(Producto p) throws Exception{
+        
+        try {
+            String sql = "UPDATE producto SET precio= '" + p.getPrecio()+ "' WHERE codigo LIKE " + p.getCodigo();
+        insertarModificarEliminar(sql);
+        } catch (Exception e) {
+            throw e;
+        }
+        
+    }
+    
+  
 }
 
 
-
+            
+            

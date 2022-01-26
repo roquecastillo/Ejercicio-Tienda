@@ -10,9 +10,11 @@ import tienda.persistencia.ProductoDAO;
 public class ProductoService {
     
     private ProductoDAO dao;
+    private FabricanteService fabricanteService;
 
     public ProductoService() {
         this.dao = new ProductoDAO();
+        fabricanteService = new FabricanteService();
     }
     
     public List<Producto> listarNombres() throws Exception{
@@ -21,6 +23,13 @@ public class ProductoService {
         
         return productos;
         
+    }
+    
+    public void mostrarTodo() throws Exception{
+        List<Producto> productos = listarNombres();
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
     }
     
     public void mostrarNombres() throws Exception{
@@ -46,10 +55,10 @@ public class ProductoService {
             if (producto.getPrecio() >= 120 && producto.getPrecio() <= 202) {
                 System.out.println(producto.getNombre());
             }
-            
-        
         }
     }
+            
+        
     
     public void mostrarPortatiles() throws Exception{
         
@@ -76,6 +85,7 @@ public class ProductoService {
     
     public void ingresarProducto(int codigo, String nombre, double precio, int codigo_fabricante) throws Exception{
         
+       
         Producto producto = new Producto();
         producto.setCodigo(codigo);
         producto.setNombre(nombre);
@@ -85,5 +95,21 @@ public class ProductoService {
         dao.crearProducto(producto);
     }
     
-
+    public void editarNombre(int codigo, String nombre) throws Exception{
+        Producto p = new Producto();
+        p.setCodigo(codigo);
+        p.setNombre(nombre);
+        
+        dao.editarNombre(p);
+    }
+    
+    
+        
 }
+        
+
+        
+    
+    
+    
+
